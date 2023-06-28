@@ -171,6 +171,48 @@ class Tree{
 
       return arr;
     }
+
+    height(node = this.root){
+      if (node === null){
+        return 0;
+      }
+
+      let lHeight = this.height(node.left);
+      let rHeight = this.height(node.right);
+
+      if (lHeight > rHeight){
+        return lHeight + 1;
+      }
+      else{
+        return rHeight + 1;
+      }
+    }
+
+    depth(node, root = this.root, depth = 0){
+      if (root === null || node === null){
+        return;
+      }
+
+      if (node === root){
+        return `Depth: ${depth}`;
+      }
+
+      if (node.data < root.data){
+        return this.depth(node, root.left, depth += 1);
+      }
+      else{
+        return this.depth(node, root.right, depth += 1);
+      }
+    }
+
+    isBalanced(node = this.root){
+      const lHeight = this.height(root.left);
+      const rHeight = this.height(root.right);
+      const diff = Math.abs(lHeight - rHeight);
+      return diff < 2 ? 'true' : 'false';
+    }
+
+    
 };
 
 
