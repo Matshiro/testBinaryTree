@@ -117,6 +117,60 @@ class Tree{
       }
       return arr;
     }
+
+    inorder(arr = [], node = this.root){
+      if (node === null){
+        return;
+      }
+
+      if (node.left){
+        this.inorder(arr, node.left);
+      }
+
+      arr.push(node.data);
+
+      if (node.right){
+        this.inorder(arr, node.right);
+      }
+
+      return arr;
+    }
+
+    preorder(arr = [], node = this.root){
+      if (node === null){
+        return;
+      }
+
+      arr.push(node.data);
+
+      if (node.left){
+        this.preorder(arr, node.left);
+      }
+
+      if (node.right){
+        this.preorder(arr, node.right);
+      }
+
+      return arr;
+    }
+
+    postorder(arr = [], node = this.root){
+      if (node === null){
+        return;
+      }
+
+      if (node.left){
+        this.preorder(arr, node.left);
+      }
+
+      if (node.right){
+        this.preorder(arr, node.right);
+      }
+
+      arr.push(node.data);
+
+      return arr;
+    }
 };
 
 
