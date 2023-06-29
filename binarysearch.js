@@ -212,6 +212,12 @@ class Tree{
       return diff < 2 ? 'true' : 'false';
     }
 
+    rebalance(){
+      let arr = this.levelOrder([], [], this.root);
+      arr.sort((a,b) => a-b);
+      return this.root = buildTree(arr);
+    }
+
     
 };
 
